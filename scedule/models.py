@@ -1,15 +1,15 @@
 from django.db import models
 
 
+class Subject(models.Model):
+    title = models.CharField(max_length=100)
+    summary = models.TextField()
+
+
 class Teacher(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-
-
-class Subject(models.Model):
-    title = models.CharField(max_length=100)
-    teacher = models.ForeignKey(Teacher, on_delete=models.DO_NOTHING)
-    summary = models.TextField()
+    subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
 
 
 class Student(models.Model):
