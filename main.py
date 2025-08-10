@@ -13,7 +13,6 @@ def add_subject():
 def add_teacher():
     first_name = input("Введіть ім'я вчителя:")
     last_name = input('Введіть прізвище')
-    #Teacher.objects.create(first_name=first_name, last_name=last_name)
     id = int(input("Введіть id предмету"))
     subject = Subject.objects.get(id=id)
     if subject:
@@ -26,4 +25,4 @@ while True:
     elif choise == 2:
         add_teacher()
     elif choise == 0:
-        break          
+        break           
