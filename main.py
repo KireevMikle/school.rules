@@ -31,35 +31,27 @@ def add_class():
     if student:
         Class.objects.create(title=name, summary=description, student=student)
 
-#def add_schedule():
-#    id = int(input("Введіть id предмету: "))
-#    subject = Subject.objects.get(id=id)
-#    if subject:
-#        Schedule.objects.create(subject=subject)
-#    id = int(input("Введіть id класу: "))
-#    class_room = Class.objects.get(id=id)
-#    if class_room:
-#        Schedule.objects.create(class_room=class_room)
-#    id = int(input("Введіть id вчителя: "))
-#    teacher = Teacher.objects.get(id=id)
-#    if teacher:
-#        Schedule.objects.create(teacher=teacher)
-#    date = 
-#    time = 
-#    Schedule.objects.create(date=date, time=time)
+def add_schedule():
+    sub_id = int(input("Введіть id предмету: "))
+    subject = Subject.objects.get(id=sub_id)
+    cls_id = int(input("Введіть id класу: "))
+    class_room = Class.objects.get(id=cls_id)
+    id = int(input("Введіть id вчителя: "))
+    teacher = Teacher.objects.get(id=id)
+    date = input("Введіть дату: ")
+    time = input("Введіть час: ")
+    if subject and class_room and teacher:
+        Schedule.objects.create(subject=subject, class_room=class_room, teacher=teacher, date=date, time=time)
     
-#def add_grade():
-#    id = int(input("Введіть id предмету: "))
-#    subject = Subject.objects.get(id=id)
-#    if subject:
-#        Grade.objects.create(subject=subject)
-#    id = int(input("Введіть id студента: "))
-#    student = Student.objects.get(id=id)
-#    if student:
-#        Grade.objects.create(student=student)
-#    date = 
-#    grade = int(input("введіть оцінку"))
-#    Grade.objects.create(date=date, grade=grade)
+def add_grade():
+    id = int(input("Введіть id предмету: "))
+    subject = Subject.objects.get(id=id)
+    id = int(input("Введіть id студента: "))
+    student = Student.objects.get(id=id)
+    date = input("Введіть дату: ")
+    grade = int(input("введіть оцінку: "))
+    if subject and student:
+        Grade.objects.create(subject=subject, student=student, date=date, grade=grade)
 
 while True:
     choise=menu()
@@ -71,10 +63,10 @@ while True:
         add_student()
     elif choise == 4:
         add_class()
-    #elif choise == 5:
-    #    add_schedule()
-    #elif choise == 6:
-    #    add_grade()
+    elif choise == 5:
+        add_schedule()
+    elif choise == 6:
+        add_grade()
     elif choise == 0:
         break
     else:
